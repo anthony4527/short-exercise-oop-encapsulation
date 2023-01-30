@@ -1,9 +1,6 @@
 package com.techreturners.encapsulation.bankaccount.model;
 
 import java.text.MessageFormat;
-import com.techreturners.encapsulation.bankaccount.model.SunnyCondition;
-
-import com.techreturners.encapsulation.bankaccount.model.HotColdThreshold;
 
 public class WeatherReporter {
     private final double FahrenCelciusSCALE = (9.0 / 5.0);
@@ -25,8 +22,8 @@ public class WeatherReporter {
 
     }
 
-    public static void main(String[] args) {
+    /* public static void main(String[] args) {
         WeatherReporter weatherHere = new WeatherReporter("France", 18);
         System.out.println (weatherHere.print());
-    }
+    }*/
 }
