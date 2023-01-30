@@ -1,11 +1,16 @@
 package com.techreturners.encapsulation.bankaccount.model;
 
 import java.text.MessageFormat;
+import com.techreturners.encapsulation.bankaccount.model.SunnyCondition;
+
+import com.techreturners.encapsulation.bankaccount.model.HotColdThreshold;
 
 public class WeatherReporter {
+    private final double FahrenCelciusSCALE = (9.0 / 5.0);
+    private final double FahrenCelciusDIFF = 32.0;
 
-    public String location;
-    public double temperature;
+    private final String location;
+    private final double temperature;
 
     public WeatherReporter(String location, double temperature) {
         this.location = location;
@@ -14,39 +19,14 @@ public class WeatherReporter {
 
     public String print() {
 
-        double newTemp = (9.0 / 5.0) * temperature + 32;
-        return MessageFormat.format("I am in {0} and it is {1}. {2}. The temperature in Fahrenheit is {3}.", location, check1(), check2(), newTemp);
+        double newTemp = FahrenCelciusSCALE * temperature + FahrenCelciusDIFF ;
+        return MessageFormat.format("I am in {0} and it is {1}. {2}. The temperature in Fahrenheit is {3}.",
+                location, SunnyCondition.checkSunnyDay( location ), HotColdThreshold.checkTempThreshold(temperature), newTemp);
 
     }
 
-    public String check1() {
-        if (location == "London") {
-
-            return "🌦";
-
-        } else if (location == "California") {
-
-            return "🌅";
-
-        } else if (location == "Cape Town") {
-
-            return "🌤";
-
-        }
-        return "🔆";
+    public static void main(String[] args) {
+        WeatherReporter weatherHere = new WeatherReporter("France", 18);
+        System.out.println (weatherHere.print());
     }
-
-    public String check2() {
-        if (temperature > 30) {
-
-            return "It's too hot 🥵!";
-
-        } else if (temperature < 10) {
-
-            return "It's too cold 🥶!";
-
-        }
-        return "Ahhh...it's just right 😊!";
-    }
-
 }
