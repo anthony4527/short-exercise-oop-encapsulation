@@ -16,14 +16,10 @@ public class WeatherReporter {
 
     public String print() {
 
-        double newTemp = FahrenCelciusSCALE * temperature + FahrenCelciusDIFF ;
+        double newTemp = FahrenCelciusSCALE * temperature + FahrenCelciusDIFF;
         return MessageFormat.format("I am in {0} and it is {1}. {2}. The temperature in Fahrenheit is {3}.",
-                location, SunnyCondition.checkSunnyDay( location ), HotColdThreshold.checkTempThreshold(temperature), newTemp);
+                location, SunnyCondition.checkSunnyDay(location), HotColdThreshold.checkTempThreshold(temperature), newTemp);
 
     }
 
-    /* public static void main(String[] args) {
-        WeatherReporter weatherHere = new WeatherReporter("France", 18);
-        System.out.println (weatherHere.print());
-    }*/
 }
